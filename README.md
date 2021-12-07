@@ -4,6 +4,19 @@
 
 一款CTF编码、解码、加密、解密工具。
 
+##### 安装依赖：
+
+- pip install base36
+- pip install base58
+- pip install base91
+- py3base92-master\py3base92_setup>install.bat 到github上找到py3base92下载，执行install.bat
+- pip install pybase62
+- pip install PyQt5
+- pip install pyperclip
+- pip install wheel
+- pip install F:\download\gmpy2-2.0.8-cp39-cp39-win_amd64.whl(我的python是3.9版本，所以下载的是cp39,https://www.lfd.uci.edu/~gohlke/pythonlibs/ 到这里搜索下载)
+
+
 ##### 支持的编码解码:
 
 - [x] URL-UTF-8            
