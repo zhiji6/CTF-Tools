@@ -111,6 +111,7 @@ create_function('',";}system('ls /');//")
 <?php
 error_reporting(0);
 highlight_file(__FILE__);
+$pwd=getcwd();
 class func
 {
         public $mod1="1";
