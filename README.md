@@ -99,7 +99,7 @@ def run(source_text):
 php的神奇函数
 create_function；如下代码就能调用系统命令ls /
 
-```
+```php
 <?php
 echo 'Hello World!';
 create_function('',";}system('ls /');//")
@@ -107,7 +107,7 @@ create_function('',";}system('ls /');//")
 ```
 
 
-```
+```php
 <?php
 error_reporting(0);
 highlight_file(__FILE__);
